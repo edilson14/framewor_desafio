@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+  <mat-card class="col-md-3" *ngFor="let album of allAlbuns; let index = index">
+    <mat-card-header class="justify-content-center">
+      <mat-card-title>
+        {{ album.title }}
+      </mat-card-title>
+    </mat-card-header>
+    <img
+      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+      mat-card-image
+      alt="Imagem de Preview"
+    />
+    <mat-card-actions>
+      <button
+        class="btn-primary btn"
+        (click)="getPhotos(album.id); showImages(imageModal, album.id)"
+      >
+        Ver Imagens
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<ng-template #imageModal>
+  <mat-card *ngIf="isLoadingImages">
+    <mat-card-content> Carregando Imagens ... </mat-card-content>
+  </mat-card>
+  <ngb-carousel *ngIf="!isLoadingImages">
+    <ng-template ngbSlide *ngFor="let image of photos">
+      <div class="picsum-img-wrapper">
+        <img
+          [src]="image.thumbnailUrl"
+          [alt]="image.title"
+          mat-card-image
+          width="200px"
+        />
+      </div>
+      <div class="carousel-caption">
+        <p>{{ image.title }}</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</ng-template>

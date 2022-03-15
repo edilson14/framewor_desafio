@@ -1,0 +1,14 @@
+.row {
+  margin: 0.5rem;
+  mat-card {
+    margin: 0.5rem;
+
+    mat-card-title {
+      font-size: medium;
+    }
+
+    image {
+      background-size: cover;
+    }
+  }
+}
